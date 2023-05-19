@@ -4,17 +4,23 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
   constructor() {
     super();
 
     this.state = {
-      monsters: [
-        { name: 'Linda', id: '1dsfe12' },
-        { name: 'Frank', id: '1dsasdd2' },
-        { name: 'Jacky', id: '1dshgj54' },
-        { name: 'Andrei', id: '1dsh1wsa4' }
-      ]
+      monsters: [],
     };
+  }
+
+  async componentDidMount() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    if (res.ok) {
+      const users = await res.json();
+      this.setState({ monsters: users });
+    } else {
+      alert('http error:' + res.status);
+    }
   }
 
   render() {
