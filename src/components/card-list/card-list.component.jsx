@@ -1,4 +1,3 @@
-import { useState } from "react";
 import MonsterCard from '../monster-card/monster-card.component';
 import './card-list.styles.css';
 
